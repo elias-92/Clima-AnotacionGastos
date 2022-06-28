@@ -5,11 +5,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/df59baf6b8.js" crossorigin="anonymous"></script>
+    
+    <!--FONT FAMILY  -->
+    <link href="https://fonts.googleapis.com/css2?family=Marvel:wght@400;700&display=swap" rel="stylesheet">
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Expenditure Controller</title>
 </head>
 
 <body>
-    <h1>Tienda de Bebidas</h1>
+    <div class="container">
+        <header class="header">
+            <h1 class="header_h1">Control de Gastos</h1>
+        </header>
+        <main class="main">
+            <section class="main_content">
+                <article class="primary_content">
+                    <h2 class="primary_content-h2">Agrega tus gastos aqui</h2>
+                    <form id="form">
+                        <label for="product" class="form_label">Productos:</label>
+                        <input id="product" class="form_input" type="text" name="product" placeholder="Nombre del Producto">
+                        <label for="price" class="form_label">Precio:</label>
+                        <input id="price" class="form_input" type="text" name="price" placeholder="Precio $">
+                        <button class="form_btn" type="submit">Agregar</button>
+                    </form>
+                </article>
+                <article class="secundary_content">
+                    <h2 class="secundary_content-h2">Lista de Productos</h2>
+                    <div class="product_list">
+                        <ul id="list-ul" class="list-ul"></ul>
+                    </div>
+                    <div id="budget" class="budget">
+                        <div id="budget_alert" class="budget_alert">
+                            <p class="budget_p" id="budget_p">Total:<span id="total" class="total"></span></p>
+                        </div>
+                        <div class="average">
+                            <p class="budget_p">Promedio:<span id="average"></span></p>
+                        </div>
+                        <div class="alert_average">
+                            <p>*El promedio se calcula sumando los productos y dividiendo por el total</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
+        
+    </div>
 
 
     <script src="./js/main.js"></script>
