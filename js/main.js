@@ -1,20 +1,21 @@
 
 //CONSTANTES 
 const formulario = document.getElementById('form');
-const listaProductos = document.getElementById('list-ul');
+const listaProductos = document.getElementById('product_list-ul');
+const spanTotal = document.getElementById('total');
+const spanPromedio = document.getElementById('average');
 
-//EVENTO
+
+//EVENTOS
 eventListeners();
 
 function eventListeners(){
     formulario.addEventListener('submit', agregarProductos);
-    // Contenido cargado
-    document.addEventListener('DOMContentLoaded', () => {
-        productList = JSON.parse(localStorage.getItem('productList')) || []  ;
-        console.log(productList);
-        ui.productosListados(productList);
-    });
+
 }
+window.addEventListener('DOMContentLoaded', ()=>{
+    calcularTotal();
+})
 
 //                       <---------------- START CLASES-------------->
 
@@ -25,23 +26,12 @@ class Presupuesto {
     
     nuevoGasto(gasto){
         this.gastos = [...this.gastos, gasto];
-        this.calcularTotal();
+        sincronizarStorage(this.gastos);
     }
 
-    calcularTotal(){
-        const gastado = this.gastos.reduce( (total, gasto) => total + gasto.inputPrice, 0);
-        this.suma = gastado;
-    }
     eliminarGasto(id){
         this.gastos = this.gastos.filter(gasto => gasto.id !== id);
-        this.calcularTotal();
-
-        const {gastos, suma} = presupuesto;
-        // elimina los gastos del html
-        ui.productosListados(gastos);
-
-        // actualizar restante
-        ui.actualizarTotal(suma);
+        sincronizarStorage(this.gastos);
     }
 
     
@@ -68,63 +58,9 @@ class Ui {
             divMensaje.remove();
         }, 1000);
     }
-
-    insertarTotal(total){
-        const sumaProd = total;
-        // agregar al html
-        document.querySelector('#total').textContent = sumaProd;
-        // agregar el total de los productos
-        let span = document.createElement('span');
-        span.className = 'total'
-        span.innerHTML = `${total}`;
-        sumaProd.appendChild(span);
-    };
-
-    actualizarTotal(suma){
-        this.insertarTotal(total);
-        document.getElementById('total').textContent = suma;    
-    };
-    
-    productosListados(gastos){ 
-        this.limpiarHtml();
-        // itera por cada producto
-        gastos.forEach( gasto => {
-            const {inputPrice, inputProduct, id} = gasto
-        
-            // crear lista con datos ingresados en el formulario
-            let li = document.createElement('li')
-            li.className = 'list-li';
-            li.dataset.id = id;
-            li.innerHTML = `<div class="li_p">
-                                <p>Producto: <span id="item">${inputProduct}</span></p>
-                                <p>Precio: $ <span id="item_price">${inputPrice}</span></p>
-                            </div>`;
-            // boton eliminar producto
-            const btnEliminar = document.createElement('button');
-            btnEliminar.className = 'btn_eliminar';
-            btnEliminar.innerHTML = `<i class="fas fa-trash-alt"></i>`;
-            li.appendChild(btnEliminar);
-            btnEliminar.onclick = ()=>{
-                presupuesto.eliminarGasto(id);
-            }
-            // agregar al html
-            listaProductos.appendChild(li);
-        });
-
-        sincronizarStorage();
-    }
-
-    limpiarHtml(){
-        while(listaProductos.firstChild){
-            listaProductos.removeChild(listaProductos.firstChild);
-        }
-    };
-    
 }
 const ui = new Ui();
 //                        <-------------- END CLASES------------>
-
-
 
 
 //                    <--------------- START FUNCIONES-------------->
@@ -153,24 +89,49 @@ function agregarProductos(e){
     
     // imprimir alerta
     ui.imprimirAlerta('Gasto agregado');
-    
-    // imprimir gastos
-    const {gastos, suma} = presupuesto;
-
-    // agregar lista de productos al html
-    ui.productosListados(gastos);
-    
-    ui.actualizarTotal(suma);
 
     formulario.reset();
 }
 
 // Agrega productos a local storage
-function sincronizarStorage() {
-    localStorage.setItem('productList', JSON.stringify(presupuesto.gastos));
+function sincronizarStorage(gasto) {
+    localStorage.setItem('productList', JSON.stringify(gasto));
+    calcularTotal();
 }
 
+function calcularTotal(){
+    let listProduct = JSON.parse(localStorage.getItem('productList'));
+    const gastado = listProduct.reduce( (total, {inputPrice}) => total + inputPrice, 0);
+    spanTotal.innerHTML = gastado;
+    productosListados(listProduct);
+}
 
+function productosListados(listProduct){ 
+    listaProductos.innerHTML = '';
+    // itera por cada producto
+    listProduct.forEach( producto => {
+        const {inputPrice, inputProduct, id} = producto
+    
+        // crear lista con datos ingresados en el formulario
+        let li = document.createElement('li')
+        li.className = 'list-li';
+        li.dataset.id = id;
+        li.innerHTML = `<div class="li_p">
+                            <p>Producto: <span id="item">${inputProduct}</span></p>
+                            <p>Precio: $ <span id="item_price">${inputPrice}</span></p>
+                        </div>`;
+        //boton eliminar producto
+        const btnEliminar = document.createElement('button');
+        btnEliminar.className = 'btn_eliminar';
+        btnEliminar.innerHTML = `<i class="fas fa-trash-alt"></i>`;
+        li.appendChild(btnEliminar);
+        btnEliminar.onclick = ()=>{
+            presupuesto.eliminarGasto(id);
+        }
+        // agregar al html
+        listaProductos.appendChild(li);
+    });
+}
 
 //                          <-----------------END FUNCIONES--------------->
 
