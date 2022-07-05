@@ -43,7 +43,7 @@ body {
     width: 100vw;
     height: 100vh;
     min-width: 280px;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
@@ -96,6 +96,8 @@ body {
     font-weight: 700;
     letter-spacing: 1px;
 }
+
+
 
 
 .form_input {
@@ -162,11 +164,10 @@ body {
 
 .budget_alert,
 .average {
-    height: 4rem;
     width: 80%;
     text-align: center;
     border-radius: 1rem;
-    padding-top: .5rem;
+    padding: .5rem;
     background-color: rgba(0, 0, 0, .7);
     margin-top: 0.5rem;
 }

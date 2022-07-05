@@ -25,6 +25,7 @@ class Presupuesto {
     }
     
     nuevoGasto(gasto){
+        // spread
         this.gastos = [...this.gastos, gasto];
         sincronizarStorage(this.gastos);
     }
@@ -42,12 +43,11 @@ class Ui {
     // varificar si hay error en la carga de inputs
     imprimirAlerta(mensaje,tipo){
         let divMensaje = document.createElement('div');
-        if(tipo === 'error'){
-            divMensaje.className ='text-center alerta';
-        }else{
-            divMensaje.className ='text-center success' ;
-    
-        }
+        // Operador ternario
+        (tipo === 'error') 
+        ? divMensaje.className ='text-center alerta' 
+        : divMensaje.className ='text-center success';
+
         divMensaje.textContent = mensaje;
     
         // agregar al html la alerta
@@ -71,16 +71,14 @@ function agregarProductos(e){
     // leer datos del formulario
     const inputProduct = document.getElementById('product').value;
     const inputPrice = Number(document.getElementById('price').value);
-    
-    // validar datos del formulario
+    //validar datos del formulario
     if(inputProduct === '' || inputPrice === ''){
-        ui.imprimirAlerta('Ambos campos son oblogatorios', 'error');
+        ui.imprimirAlerta('Productos y Precios son obligatorios', 'error');
         return;
     } else if(inputPrice <= 0 || isNaN(inputPrice)){
-        ui.imprimirAlerta('Cantidad no válida', 'error');
+        ui.imprimirAlerta('Precio no válido', 'error');
         return;
     }
-    
     // generar obj con el gasto
     const gasto = {inputProduct, inputPrice, id: Date.now()};
     
@@ -89,6 +87,7 @@ function agregarProductos(e){
     
     // imprimir alerta
     ui.imprimirAlerta('Gasto agregado');
+
 
     formulario.reset();
 }
@@ -101,8 +100,9 @@ function sincronizarStorage(gasto) {
 
 function calcularTotal(){
     let listProduct = JSON.parse(localStorage.getItem('productList'));
-    const gastado = listProduct.reduce( (total, {inputPrice}) => total + inputPrice, 0);
-    spanTotal.innerHTML = gastado;
+    const precioTotal = listProduct.reduce( (total, {inputPrice}) => total + inputPrice, 0);
+    spanTotal.innerHTML = precioTotal.toFixed(2);
+    promedio();
     productosListados(listProduct);
 }
 
@@ -118,7 +118,7 @@ function productosListados(listProduct){
         li.dataset.id = id;
         li.innerHTML = `<div class="li_p">
                             <p>Producto: <span id="item">${inputProduct}</span></p>
-                            <p>Precio: $ <span id="item_price">${inputPrice}</span></p>
+                            <p>Precio: $ <span id="item_price">${inputPrice.toFixed(2)}</span></p>
                         </div>`;
         //boton eliminar producto
         const btnEliminar = document.createElement('button');
@@ -132,7 +132,13 @@ function productosListados(listProduct){
         listaProductos.appendChild(li);
     });
 }
-
+// calcular promedio
+function promedio() {
+    let listProduct = JSON.parse(localStorage.getItem('productList')); // producto, precio, id
+    const precioTotal = listProduct.reduce( (total, {inputPrice}) => total + inputPrice, 0);
+    const promedio = precioTotal / listProduct.length;
+    spanPromedio.innerHTML = promedio.toFixed(2);
+}
 //                          <-----------------END FUNCIONES--------------->
 
 
