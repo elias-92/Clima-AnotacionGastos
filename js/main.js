@@ -41,22 +41,33 @@ const presupuesto = new Presupuesto();
 
 class Ui {
     // varificar si hay error en la carga de inputs
-    imprimirAlerta(mensaje,tipo){
-        let divMensaje = document.createElement('div');
-        // Operador ternario
-        (tipo === 'error') 
-        ? divMensaje.className ='text-center alerta' 
-        : divMensaje.className ='text-center success';
 
-        divMensaje.textContent = mensaje;
+
+    // IMPLEMENTACION DE LIBRERIA SWEETALERT2
+    imprimirAlerta(position,icon,mensaje,showConfirmButton,timer){
+        Swal.fire({
+            position: position,
+            icon: icon,
+            title: mensaje,
+            showConfirmButton: showConfirmButton,
+            timer: timer
+        });
+        
+        // let divMensaje = document.createElement('div');
+        // // Operador ternario
+        // (tipo === 'error') 
+        // ? divMensaje.className ='text-center alerta' 
+        // : divMensaje.className ='text-center success';
+
+        // divMensaje.textContent = mensaje;
     
-        // agregar al html la alerta
-        document.querySelector('.primary_content').insertBefore(divMensaje, formulario);
+        // // agregar al html la alerta
+        // document.querySelector('.primary_content').insertBefore(divMensaje, formulario);
     
-        // remover alerta despues de 3 segundos
-        setTimeout(() => {
-            divMensaje.remove();
-        }, 1000);
+        // // remover alerta despues de 3 segundos
+        // setTimeout(() => {
+        //     divMensaje.remove();
+        // }, 1000);
     }
 }
 const ui = new Ui();
@@ -73,10 +84,12 @@ function agregarProductos(e){
     const inputPrice = Number(document.getElementById('price').value);
     //validar datos del formulario
     if(inputProduct === '' || inputPrice === ''){
-        ui.imprimirAlerta('Productos y Precios son obligatorios', 'error');
+        // ui.imprimirAlerta('Productos y Precios son obligatorios', 'error');
+        ui.imprimirAlerta('center', 'warning', 'Productos y Precios son obligatorios', false, 1500);//llamada a sweetAlert2
         return;
     } else if(inputPrice <= 0 || isNaN(inputPrice)){
-        ui.imprimirAlerta('Precio no válido', 'error');
+        ui.imprimirAlerta('center', 'warning', 'Precio no válido', false, 1500);//llamada a sweetAlert2
+        // ui.imprimirAlerta('Precio no válido', 'error');
         return;
     }
     // generar obj con el gasto
@@ -86,7 +99,8 @@ function agregarProductos(e){
     presupuesto.nuevoGasto(gasto);
     
     // imprimir alerta
-    ui.imprimirAlerta('Gasto agregado');
+    ui.imprimirAlerta('center', 'success', 'Gasto Agregado', false, 2000);//llamada a sweetAlert2
+    // ui.imprimirAlerta('Gasto agregado');
 
 
     formulario.reset();
