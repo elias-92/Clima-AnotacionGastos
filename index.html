@@ -1,64 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- FONT AWESOME -->
-    <script src="https://kit.fontawesome.com/df59baf6b8.js" crossorigin="anonymous"></script>
-    
     <!--FONT FAMILY  -->
     <link href="https://fonts.googleapis.com/css2?family=Marvel:wght@400;700&display=swap" rel="stylesheet">
     <!-- STYLE CSS -->
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Expenditure Controller</title>
+    <link rel="stylesheet" href="./css/styleIndex.css">
+
+    <title>Clima y Anotacion de Gastos</title>
 </head>
-
 <body>
-    <div class="container">
-        <header class="header">
-            <h1 class="header_h1">Control de Gastos</h1>
-        </header>
-        <main class="main">
-            <section class="main_content">
-                <article class="primary_content">
-                    <h2 class="primary_content-h2">Agrega tus gastos aqui</h2>
-                    <form id="form">
-                        <label for="product" class="form_label">Productos:</label>
-                        <input id="product" class="form_input" type="text" name="product" placeholder="Nombre del Producto">
-                        <label for="price" class="form_label">Precio:</label>
-                        <input id="price" class="form_input" type="text" name="price" placeholder="Precio $">
-                        <button class="form_btn" type="submit">Agregar</button>
-                    </form>
-                    <div id="budget" class="budget">
-                        <div id="budget_alert" class="budget_alert">
-                            <p class="budget_p">Total:<span id="total"></span></p>
-                        </div>
-                        <div class="average">
-                            <p class="budget_p">Promedio:<span id="average"></span></p>
-                        </div>
-                        <div class="alert_average">
-                            <p>*Total / Productos = Promedio</p>
-                        </div>
-                    </div>
-                </article>
-                <article class="secundary_content">
-                    <h2 class="secundary_content-h2">Lista de Productos</h2>
-                    <div id="product_list">
-                        <ul id="product_list-ul" class="product_list-ul"></ul>
-                    </div>
-                </article>
-            </section>
-        </main>
-        
-    </div>
+    <div class="gradient"> 
+    <header>
+        <h1>Elije una opcion</h1>
+    </header>
+    <main class="main_index">
+        <div class="div__gastos">
+            <a href="./html/gastos.html" class="main_a" id="clima">
+                <span class="span1"></span>
+                <span class="span2"></span>
+                <span class="span3"></span>
+                <span class="span4"></span>
+                Anotacion de Gastos
+            </a>
+        </div>
+        <div class="div__clima">
+            <a href="./html/clima.html" class="main_a" id="gastos">
+                <span class="span1"></span>
+                <span class="span2"></span>
+                <span class="span3"></span>
+                <span class="span4"></span>
+                Consulta el Clima
+            </a>
+        </div>
+    </main>
+    <footer>
+        <p>Derechos reservados 2022 | Creado por Elias Martinez</p>
+    </footer>
+</div>
 
-    
-    <!--Libreria SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.all.min.js" integrity="sha256-6DBhCk8kLxWN6B/oKVfvB0ieNTCY2r0rlFlkAjLmrsM=" crossorigin="anonymous"></script>
-
-    <script src="./js/main.js"></script>
 </body>
-
 </html>

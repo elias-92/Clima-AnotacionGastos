@@ -1,0 +1,55 @@
+@import url("reset.css");
+
+.containerClima {
+    box-shadow: rgba(50, 50, 93, .25) 0px 50px 100px -20px;
+    max-width: 501px;
+    text-align: center;
+    padding: 20px 20px 50px;
+    margin: 10% auto 0;
+    background-color: #546785;
+    border-radius: 9px;
+}
+
+
+.datos-clima {
+    margin-bottom: 8%;
+}
+
+.datos-clima p {
+    margin: 5px 0 5px;
+}
+
+.datos-clima h2 {
+    font-size: 70px;
+}
+
+.datos-tiempo {
+    display: flex;
+    flex-direction: column;
+}
+
+.alert-msj {
+    color: rgb(187, 30, 30);
+    font-size: 20px;
+    text-align: center;
+}
+
+.breadcrumb {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid black;
+}
+
+.breadcrumb a {
+    color: #d3d0cb;
+    text-decoration: none;
+
+}
+
+.breadcrumb a:hover {
+    color: black;
+}
+
+.active {
+    color: black !important;
+}

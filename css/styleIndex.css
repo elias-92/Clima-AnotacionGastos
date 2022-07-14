@@ -1,0 +1,120 @@
+@import url('reset.css');
+
+.gradient {
+    width: 100vw;
+    height: 100vh;
+    background: rgb(29, 25, 97);
+    background: linear-gradient(207deg, rgba(29, 25, 97, 1) 0%, rgba(32, 187, 203, 1) 44%, rgba(31, 132, 153, 1) 100%);
+}
+
+h1 {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.main_index {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.div__gastos,
+.div__clima {
+    width: 100%;
+    text-align: center;
+}
+
+
+
+.main_a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #d3d0cb;
+    border-radius: 5px;
+    padding: 30px 30px;
+    margin: 10px;
+    font-size: 1.3rem;
+    overflow: hidden;
+    transition: .2s;
+    background-color: rgba(15, 15, 16, 0.446);
+}
+
+.main_a:hover {
+    box-shadow: 0 5px 20px aqua;
+    transition-delay: 1s;
+    color: #1e1b1b;
+}
+
+.main_a span {
+    position: absolute;
+    display: block;
+}
+
+.span1 {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, aqua);
+}
+
+.main_a:hover .span1 {
+    left: 100%;
+    transition: 1s;
+}
+
+.span2 {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, aqua);
+}
+
+.main_a:hover .span2 {
+    top: 100%;
+    transition: 1s;
+    transition-delay: .25s;
+}
+
+.span3 {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, aqua);
+}
+
+.main_a:hover .span3 {
+    right: 100%;
+    transition: 1s;
+    transition-delay: .5s;
+}
+
+.span4 {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, aqua);
+}
+
+.main_a:hover .span4 {
+    bottom: 100%;
+    transition: 1s;
+    transition-delay: .75s;
+}
+
+footer {
+    position: fixed;
+    bottom: 0%;
+    margin: 10px;
+    font-size: 1.1rem;
+}
+
+footer p {
+    text-align: center;
+}

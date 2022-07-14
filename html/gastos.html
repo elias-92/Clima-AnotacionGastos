@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/df59baf6b8.js" crossorigin="anonymous"></script>
+    
+    <!--FONT FAMILY  -->
+    <link href="https://fonts.googleapis.com/css2?family=Marvel:wght@400;700&display=swap" rel="stylesheet">
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="../css/styleGastos.css">
+    
+    <title>Expenditure Controller</title>
+</head>
+
+<body>
+    <div class="containerGastos">
+        <header class="header">
+            <h1 class="header_h1">Control de Gastos</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../index.html">Inicio </a></li>
+                    <li class="breadcrumb-item active" aria-current="page">/ Gastos</li>
+                </ol>
+            </nav>
+        </header>
+        <main class="main">
+            <section class="main_content">
+                <article class="primary_content">
+                    <h2 class="primary_content-h2">Agrega tus gastos aqui</h2>
+                    <form id="form">
+                        <label for="product" class="form_label">Productos:</label>
+                        <input id="product" class="form_input" type="text" name="product" placeholder="Nombre del Producto">
+                        <label for="price" class="form_label">Precio:</label>
+                        <input id="price" class="form_input" type="text" name="price" placeholder="Precio $">
+                        <button class="form_btn" type="submit">Agregar</button>
+                    </form>
+                    <div id="budget" class="budget">
+                        <div id="budget_alert" class="budget_alert">
+                            <p class="budget_p">Total:<span id="total"></span></p>
+                        </div>
+                        <div class="average">
+                            <p class="budget_p">Promedio:<span id="average"></span></p>
+                        </div>
+                        <div class="alert_average">
+                            <p>*Total / Productos = Promedio</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="secundary_content">
+                    <h2 class="secundary_content-h2">Lista de Productos</h2>
+                    <div id="product_list">
+                        <ul id="product_list-ul" class="product_list-ul"></ul>
+                    </div>
+                </article>
+            </section>
+        </main>
+        
+    </div>
+
+
+
+
+    <!-- Libreria SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.20/dist/sweetalert2.all.min.js" integrity="sha256-6DBhCk8kLxWN6B/oKVfvB0ieNTCY2r0rlFlkAjLmrsM=" crossorigin="anonymous"></script>
+
+    <script src="../js/gastos.js"></script>
+</body>
+
+</html>
