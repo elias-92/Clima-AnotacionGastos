@@ -1,7 +1,7 @@
 // VARIABLES
 
 const mostrarClima = document.querySelector('.card-clima');
-const form = document.querySelector('.datos-tiempo');
+const form = document.querySelector('.form');
 const iconAnimado = document.querySelector('#iconAnimado');
 const nomCiudad = document.querySelector('#ciudad');
 const nomPais = document.querySelector('#pais');
@@ -28,9 +28,9 @@ async function llamarApi(ciudad, pais) {
         if(dataJSON.cod === '404'){
             impError('Ciudad no encontrada');
         }else{
-            impClima(dataJSON);
+            // impClima(dataJSON);
             console.log(dataJSON);
-            imgAnimada(dataJSON)
+            impClima(dataJSON)
             
         }
     })
@@ -41,15 +41,15 @@ async function llamarApi(ciudad, pais) {
 // IMPRIME CARD CLIMA
 function impClima(data){
     mostrarClima.innerHTML = '';
-    const img = '../img/animated/rainy-1.svg';
+    // const img = '../img/animated/rainy-1.svg';
     const {name, main:{temp, temp_max, temp_min}, weather:[arr]} = data;
     const card = document.createElement('div');
-    card.innerHTML=`<h3>Clima en ${name}</h3>
-                    <img id="iconAnimado" src="${img}" alt="" style="width:80px;margin: auto">
-                    <h4>${arr.description}</h4>
-                    <h2>${temp.toFixed(0)}°C</h2>
-                    <p>Max: ${temp_max.toFixed(0)}°C</p>
-                    <p>Min: ${temp_min.toFixed(0)}°C</p>`
+    card.innerHTML=`<h3 style="font-size: 1.55rem; padding-top: .5rem;">Clima en ${name}</h3>
+                    <img src="http://openweathermap.org/img/wn/${arr.icon}@2x.png" alt="" style="width:80px;margin: auto">
+                    <h4 style="font-size: 1.2rem;">${arr.description}</h4>                    
+                    <h2 style="font-size: 2.5rem;padding: .5rem;">${temp.toFixed(0)}°C</h2>
+                    <p style="font-size: 1.1rem;color: #e20909e3;">Max: ${temp_max.toFixed(0)}°C</p>
+                    <p style="font-size: 1.1rem;color: #090ae2e3;">Min: ${temp_min.toFixed(0)}°C</p>`
                     
     mostrarClima.appendChild(card);
     form.reset();
@@ -70,23 +70,6 @@ function impError(msj) {
 function reset(){
     nomCiudad.innerHTML = '';
     nomPais.innerHTML = '';
-}
-// QUIERO QUE DEPENDIENDO DEL TIEMPO ME IMPRIMA UN SVG DINAMICO
-function imgAnimada(dato) {
-    const {weather:[arr]} = dato
-    switch (arr.main) {
-        case 'Clear':
-            img = '../img/animated/day.svg'
-            console.log('limpio');
-            break;
-            case 'Rain':
-            img = '../img/animated/rainy-1.svg'
-            console.log('lluvia');
-            break;
-    
-        default:
-            break;
-    }
 }
 
 

@@ -34,7 +34,7 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     vertical-align: baseline;
-    color: #d3d0cb;
+
 }
 
 /* Evitamos problemas con las imagenes */
@@ -56,7 +56,6 @@ figure {
 a {
     display: block;
     text-decoration: none;
-    color: red;
     font-size: inherit;
 }
 
@@ -127,13 +126,11 @@ button,
 label {
     font-family: inherit;
     font-size: inherit;
-    -webkit-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
     background-color: transparent;
     color: inherit;
     display: block;
-    /* opcional */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -160,16 +157,10 @@ body {
     font-size: 100%;
     font-family: var(--tipo-principal);
     color: var(--negro);
-    /* opcional */
     line-height: 1.4em;
-    /* opcional */
-    -webkit-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
-    /* opcional */
     font-smooth: always;
-    /* opcional */
     -webkit-font-smoothing: antialiased;
-    /* opcional */
     -moz-osx-font-smoothing: grayscale;
 }

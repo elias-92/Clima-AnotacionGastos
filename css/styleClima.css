@@ -1,15 +1,46 @@
 @import url("reset.css");
 
+body {
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    min-width: 280px;
+    width: 100vw;
+    height: 100vh;
+    background: url("../img/imgFondo1.jpg") no-repeat;
+    background-size: cover;
+    position: relative;
+
+}
+
+body::before {
+    content: '';
+    background-color: rgba(0, 0, 0, .7);
+    width: 100vw;
+    height: 100vh;
+    min-width: 280px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
 .containerClima {
+    position: absolute;
     box-shadow: rgba(50, 50, 93, .25) 0px 50px 100px -20px;
-    max-width: 501px;
+    width: 100%;
     text-align: center;
     padding: 20px 20px 50px;
     margin: 10% auto 0;
-    background-color: #546785;
+    background-color: rgba(107, 138, 187, .8);
     border-radius: 9px;
 }
 
+.h1 {
+    font-size: 1.5rem;
+    padding-bottom: .5rem;
+}
 
 .datos-clima {
     margin-bottom: 8%;
@@ -40,6 +71,10 @@
     border-bottom: 1px solid black;
 }
 
+.breadcrumb li {
+    font-size: 1.2rem;
+}
+
 .breadcrumb a {
     color: #d3d0cb;
     text-decoration: none;
@@ -52,4 +87,49 @@
 
 .active {
     color: black !important;
+}
+
+.form__ciudad {
+    margin: .5rem 0;
+    width: 100%;
+    height: 2rem;
+    background-color: #d3d0cb;
+    border-radius: .2rem;
+    color: black;
+
+}
+
+.form__ciudad::placeholder {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.form__pais {
+    height: 2rem;
+    width: 100%;
+    margin-bottom: .5rem;
+    background-color: #d3d0cb;
+    border-radius: .2rem;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.form__btn {
+    height: 1.5rem;
+    width: 80%;
+    margin: auto;
+    background-color: tomato;
+}
+
+@media (min-width: 576px) {
+    body {
+        width: 50%;
+        margin: auto;
+    }
+
+    .h1 {
+        font-size: 2rem;
+    }
+
+    .breadcrumb li {
+        font-size: 1.5rem;
+    }
 }

@@ -9,16 +9,16 @@
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="../css/styleClima.css">
     
-    <title>Document</title>
+    <title>Buscador de Clima</title>
 </head>
 <body>
     <main class="containerClima">
         <div class="title-breadcrumb">
-            <h1>Busca el Clima</h1>
+            <h1 class="h1">Buscador de Clima</h1>
             <!-- start breadcrumbs -->
             <nav  aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="../index.html">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="../index.html">Volver a Inicio</a></li>
                     <li class="breadcrumb-item active" aria-current="page">/ Clima</li>
                 </ol>
             </nav>
@@ -27,9 +27,9 @@
         <div class="card-clima">
             
         </div>
-        <form method="POST" class="datos-tiempo">
-            <input type="text" name="ciudad" id="ciudad" placeholder="Ciudad">
-            <select name="" id="pais">
+        <form method="POST" class="form">
+            <input type="text" name="ciudad" class="form__ciudad" id="ciudad" placeholder="Ciudad">
+            <select name="" class="form__pais" id="pais">
                 <option disabled selected>Seleccione un pais</option>
                 <option value="AR">Argentina</option>
                 <option value="CO">Colombia</option>
@@ -39,7 +39,7 @@
                 <option value="MX">Mexico</option>
                 <option value="PE">Peru</option>
             </select>
-            <input type="submit" value="Enviar">
+            <input type="submit" class="form__btn" value="Enviar">
         </form>
     </main>
 

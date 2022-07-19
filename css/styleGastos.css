@@ -60,6 +60,7 @@
 
 .breadcrumb {
     display: flex;
+    font-size: 1.2rem;
     justify-content: center;
     background-color: rgba(0, 0, 0, .7);
 }
@@ -91,7 +92,7 @@
 .primary_content-h2,
 .secundary_content-h2 {
     text-align: center;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
 }
 
@@ -231,5 +232,10 @@
     .primary_content,
     .secundary_content {
         width: 100%;
+    }
+
+    .breadcrumb {
+        padding: .2rem;
+        font-size: 1.5rem;
     }
 }
